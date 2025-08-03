@@ -6,7 +6,7 @@ import User from "@/models/User.js";
 export const inngest = new Inngest({ id: "quickcart-next" });
 
 // Save user to database.
-export const syncUserCreation = inngest.creatFunction(
+export const syncUserCreation = inngest.createFunction(
     {
         id: 'sync-user-from-clerk'
     },
