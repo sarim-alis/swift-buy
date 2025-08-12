@@ -1,6 +1,6 @@
 import connectDB from "@/config/db";
 import User from "@/models/User";
-import { getAuth } from "@clerk/nextjs/dist/types/server";
+import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 
@@ -15,7 +15,7 @@ export async function POST (request) {
       const user = await User.findById(userId)
 
       user.cartItems = cartData
-      user.save()
+      await user.save()
 
       return NextResponse.json({ success: true });
 
