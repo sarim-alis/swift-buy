@@ -35,7 +35,7 @@ export async function POST(request) {
 
         // Clear user cart.
         const user = await User.findById(userId)
-        user.cartItmes = {}
+        user.cartItems = {}
         await user.save()
 
         return NextResponse.json({ success: true, message: 'Order Placed' });
