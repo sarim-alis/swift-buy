@@ -17,10 +17,13 @@ export async function POST(request) {
         }
 
         // Calculate amount using items.
-        const amount = await items.reduce(async (acc, item) => {
-            const product = await Product.findById(item.product);
-            return acc + product.offerPrice * item.quantity;
-        }, 0)
+        const products = await Promise.all(
+            items.map(async (item) => {
+                const product = await Product.findById(item.product);
+                return product.offerPrice * item.quantity;
+            })
+        );
+        const amount = products.reduce((acc, price) => acc + price, 0);
 
         await inngest.send({
             name: 'order/created',
@@ -34,9 +37,9 @@ export async function POST(request) {
         })
 
         // Clear user cart.
-        const user = await User.findById(userId)
-        user.cartItems = {}
-        await user.save()
+        const user = await User.findById(userId);
+        user.cartItems = {};
+        await user.save();
 
         return NextResponse.json({ success: true, message: 'Order Placed' });
 
