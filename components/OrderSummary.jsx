@@ -36,6 +36,10 @@ const OrderSummary = () => {
 
   const createOrder = async () => {
 
+    if (!selectedAddress) {
+      toast.error("Please select an address")
+      return
+    }
   }
 
   useEffect(() => {
