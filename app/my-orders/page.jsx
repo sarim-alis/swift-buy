@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const MyOrders = () => {
 
@@ -17,8 +18,8 @@ const MyOrders = () => {
 
     const fetchOrders = async () => {
       try {
-
-        const token = getToken();
+        const token = await getToken();
+      if (!token) { return toast.error("No token found")}
 
         const { data } = await axios.get('/api/order/list', { headers: { Authorization: `Bearer ${token}` } });
 
@@ -31,7 +32,10 @@ const MyOrders = () => {
       } catch (error) {
         toast.error(error.message)
       }
+      finally {
+      setLoading(false)
     }
+  };
 
     useEffect(() => {
       if (user) {
@@ -77,7 +81,7 @@ const MyOrders = () => {
                                     <p className="flex flex-col">
                                         <span>Method : COD</span>
                                         <span>Date : {new Date(order.date).toLocaleDateString()}</span>
-                                        <span>Payment : Pending</span>
+                                        <span>Payment : Paid</span>
                                     </p>
                                 </div>
                             </div>
