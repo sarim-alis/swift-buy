@@ -21,14 +21,11 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
       <Link href="/" className="text-3xl md:text-4xl font-semibold text-slate-700 hover:opacity-80 transition">
-        <span className="text-[#ea580c]">quick</span>cart<span className="text-[#ea580c] text-4xl md:text-5xl leading-0">.</span>
+        <span className="text-[#ea580c]">swift</span>buy<span className="text-[#ea580c] text-4xl md:text-5xl leading-0">.</span>
       </Link>
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
         <Link href="/" className="hover:text-gray-900 transition">
           Home
-        </Link>
-        <Link href="/all-products" className="hover:text-gray-900 transition">
-          Shop
         </Link>
         <Link href="/" className="hover:text-gray-900 transition">
           About Us
@@ -41,11 +38,12 @@ const Navbar = () => {
           <input className="w-full bg-transparent outline-none placeholder-slate-600" type="text" placeholder="Search products" value={search} onChange={(e) => setSearch(e.target.value)} required />
         </form>
 
-        {isSeller && <button onClick={() => router.push('/seller')} className="text-xs border px-4 py-1.5 rounded-full">Seller Dashboard</button>}
+        
 
       </div>
 
       <ul className="hidden md:flex items-center gap-4 ">
+        {isSeller && <button onClick={() => router.push('/seller')} className="text-xs border px-4 py-1.5 rounded-full">Seller Dashboard</button>}
         <Image className="w-4 h-4" src={assets.search_icon} alt="search icon" />
         { 
           user 
