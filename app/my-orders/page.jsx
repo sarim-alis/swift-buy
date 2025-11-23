@@ -60,20 +60,20 @@ const MyOrders = () => {
                                     />
                                     <p className="flex flex-col gap-3">
                                         <span className="font-medium text-base">
-                                            {order.items.map((item) => item.product.name + ` x ${item.quantity}`).join(", ")}
+                                            {order.items.map((item) => item.product ? item.product.name + ` x ${item.quantity}` : `Unknown Product x ${item.quantity}`).join(", ")}
                                         </span>
                                         <span>Items : {order.items.length}</span>
                                     </p>
                                 </div>
                                 <div>
                                     <p>
-                                        <span className="font-medium">{order.address.fullName}</span>
+                                        <span className="font-medium">{order.address?.fullName || 'N/A'}</span>
                                         <br />
-                                        <span >{order.address.area}</span>
+                                        <span >{order.address?.area || 'N/A'}</span>
                                         <br />
-                                        <span>{`${order.address.city}, ${order.address.state}`}</span>
+                                        <span>{order.address ? `${order.address.city || 'N/A'}, ${order.address.state || 'N/A'}` : 'N/A'}</span>
                                         <br />
-                                        <span>{order.address.phoneNumber}</span>
+                                        <span>{order.address?.phoneNumber || 'N/A'}</span>
                                     </p>
                                 </div>
                                 <p className="font-medium my-auto">{currency}{order.amount}</p>
