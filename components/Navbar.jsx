@@ -21,8 +21,8 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
       <Link href="/" className="text-3xl md:text-4xl font-semibold text-slate-700 hover:opacity-80 transition">
-            <span className="text-[#ea580c]">shop</span>dock<span className="text-[#ea580c] text-4xl md:text-5xl leading-0">.</span>
-          </Link>
+        <span className="text-[#ea580c]">shop</span>dock<span className="text-[#ea580c] text-4xl md:text-5xl leading-0">.</span>
+      </Link>
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
         <Link href="/" className="hover:text-gray-900 transition">
           Home
