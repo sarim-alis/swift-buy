@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm">
-        Copyright 2025 © swiftbuy. All Right Reserved.
+        Copyright 2026 © swiftbuy. All Right Reserved.
       </p>
     </footer>
   );
